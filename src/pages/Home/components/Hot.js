@@ -2,15 +2,26 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
-const Hot = () => {
+const Hot = ({ selectedCategory }) => {
     const [videos, setVideos] = useState([]);
+    const [filterVideos, setFilterVideos] = useState([]);
     useEffect(() => {
         axios.get("./json/Video.json")
             .then(res => {
                 const hotVideo = res.data.filter(video => video.isHot === true);
-                setVideos(hotVideo)
+                setVideos(hotVideo);
+                setFilterVideos(hotVideo);
             })
     }, [])
+
+    useEffect(() => {
+        if (selectedCategory) {
+            const newArr = videos.filter(video => video.category === selectedCategory);
+            setFilterVideos(newArr);
+        } else {
+            setFilterVideos(videos)
+        }
+    }, [selectedCategory, videos])
 
     const openSocialShare = (id) => {
         document.getElementById(id).classList.toggle('d-block');
@@ -26,7 +37,7 @@ const Hot = () => {
                 </div>
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     {
-                        videos.map(video =>
+                        filterVideos.map(video =>
                             <div className="col" key={video.id}>
                                 <div className="block video-card">
                                     <div className="b-profile">
@@ -74,7 +85,6 @@ const Hot = () => {
                                 </div>
                             </div>)
                     }
-
                 </div>
             </div>
         </div>

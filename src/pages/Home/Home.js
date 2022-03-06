@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Category from './components/Category';
 import Hot from './components/Hot';
 
 const Home = () => {
+    const [selectedCategory, setSelectedCategory] = useState("");
     return (
         <main>
             <section className="pb-5 banner-area">
@@ -10,8 +11,8 @@ const Home = () => {
                     <img src="./img/banner.png" alt="banner" />
                 </div>
             </section>
-            <Category />
-            <Hot />
+            <Category selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            <Hot selectedCategory={selectedCategory} />
         </main>
     );
 };
