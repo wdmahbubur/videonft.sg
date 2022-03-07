@@ -17,7 +17,7 @@
         "priceUSD": "305",
         "serviceFee": 2,
         "owner": "dslsingapore",
-        "video": "./json/test.mp4",
+        "link": "./json/test.mp4",
         "isHot": true
     },
     {
@@ -38,11 +38,11 @@
         "priceUSD": "305",
         "serviceFee": 2,
         "owner": "dslsingapore",
-        "video": "./json/test.mp4"
+        "link": "./json/test.mp4"
     },
     {
         "id": 3,
-        "name": "Test",
+        "name": "Disconnect",
         "category": "disconnect",
         "description": "test",
         "properties": {
@@ -58,12 +58,12 @@
         "priceUSD": "305",
         "serviceFee": 2,
         "owner": "dslsingapore",
-        "video": "./json/test.mp4",
+        "link": "./json/test.mp4",
         "isHot": true
     },
     {
         "id": 4,
-        "name": "Test",
+        "name": "Disconnect",
         "category": "disconnect",
         "description": "test",
         "properties": {
@@ -79,7 +79,7 @@
         "priceUSD": "305",
         "serviceFee": 2,
         "owner": "dslsingapore",
-        "video": "./json/test.mp4",
+        "link": "./json/test.mp4",
         "isHot": true
     }
 ]

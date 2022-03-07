@@ -38,18 +38,30 @@ const Header = () => {
                                 <NavLink to="/login" className="text-decoration-none">
                                     <button className="outlined bg-dark">Connect</button>
                                 </NavLink>
+                                {/* <NavLink to="/login" className="text-decoration-none">
+                                    <button className="outlined bg-dark">Disconnect</button>
+                                </NavLink> */}
                             </div>
                         </center>
-                        <center><NavLink to="/marketplace" className="text-decoration-none">  Marketplace </NavLink></center>
+                        <center><NavLink to="/marketplace" className="text-decoration-none ms-lg-5">  Marketplace </NavLink></center>
+                        {/* <center><NavLink to="/marketplace" className="text-decoration-none">  My Collection </NavLink></center>
+                        <center><NavLink to="/marketplace" className="text-decoration-none">  Create </NavLink></center>
+                        <center><NavLink to="/marketplace" className="text-decoration-none">  Profile </NavLink></center> */}
 
                     </div>
                 </div>
                 <div className="h-right">
                     <div className="d-flex align-items-center">
                         <div className="account-box pc-ml-auto mb-none">
+                            {/* <button class="outlined"></button> */}
                             <NavLink to="/login" className="text-decoration-none">
                                 <button type="button" className="outlined bg-dark">Connect</button>
                             </NavLink>
+
+                            {/* <NavLink to="#" data-toggle="modal" data-target="#exampleModal" style="font-size: 12px;display: flex; justify-content: center;color:red" class=" mt-3">Disconnect</NavLink>
+                            @else
+                            <a href="#" data-toggle="modal" data-target="#exampleModal" style="display: flex; justify-content: center;" type="button" class=" mt-1">Logout </a>
+                            @endif */}
                         </div>
                     </div>
                 </div>
