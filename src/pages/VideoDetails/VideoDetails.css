@@ -1,0 +1,17 @@
+.social-links{
+    display: none;
+}
+.social-links ul li a span{
+    color: #e6b000;
+
+}
+.show-social-icon{
+    display: block !important;
+}
+.nav-tabs .nav-link{
+    color: black;
+}
+.nav-tabs .nav-link.active{
+    color: #e6b000 !important;
+    border-color: #e6b000 #e6b000 #fff !important;
+}

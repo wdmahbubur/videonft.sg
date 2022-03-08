@@ -6,7 +6,7 @@ const Home = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
     return (
         <main>
-            <section className="pb-5 banner-area">
+            <section className="banner-area">
                 <div className="banner">
                     <img src="./img/banner.png" alt="banner" />
                 </div>

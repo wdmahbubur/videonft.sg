@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const VideoCard = ({ video }) => {
-    const { id, name, link, owner } = video;
+    const { id, name, link, owner, instantSalesPrice } = video;
     const openSocialShare = (id) => {
         document.getElementById(id).classList.toggle('d-block');
     }
@@ -34,12 +34,12 @@ const VideoCard = ({ video }) => {
 
                 </div>
                 <div className="b-desc">
-                    <NavLink to="/video-details" className="text-decoration-none text-center" >
+                    <NavLink to={`/video-details/${id}`} className="text-decoration-none text-center" >
                         <h3> @{owner} </h3>
                         {/* <p className="price price_font_weight"> Bid &nbsp; &nbsp; <span className="span_color"> 0.1 WETH  </span></p> */}
                         <p className="bid justify-content-center" style={{ display: "block !important" }}>
                             Instant Sale Price
-                            <span className="span_color">5 WETH</span>
+                            <span className="span_color">{instantSalesPrice}</span>
                         </p>
                     </NavLink>
                     <p>

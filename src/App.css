@@ -13,7 +13,7 @@
     .menu-icon{
         width: 100%;
     }
-    .nav{
+    .main-menu{
         top:70px;
     }
 }
@@ -33,7 +33,7 @@
         margin-right: 0px;
         margin-left: 20px;
     }
-    .nav{
+    .main-menu{
         top:110px;
     }
 }

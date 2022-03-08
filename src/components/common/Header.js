@@ -32,7 +32,7 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <div className="nav ms-5 ms-md-0 ps-1 d-flex mb-none align-content-center" ref={menu}>
+                    <div className="nav ps-1 d-flex mb-none align-content-center main-menu" ref={menu}>
                         <center>
                             <div className="account-box pc-ml-auto d-md-none">
                                 <NavLink to="/login" className="text-decoration-none">

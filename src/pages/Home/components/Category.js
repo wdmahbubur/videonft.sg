@@ -14,7 +14,7 @@ const Category = ({ selectedCategory, setSelectedCategory }) => {
         setSelectedCategory(name)
     }
     return (
-        <div className="container">
+        <div className="container py-4">
             <div className='d-flex justify-content-evenly flex-wrap gap-2'>
                 <button className="btn border border-2 border-secondary" onClick={() => selectCategory("")}>All</button>
                 {

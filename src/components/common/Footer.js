@@ -1,48 +1,59 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
+    const [socialLinks, setSocialLinks] = useState({});
+
+    const getSocialLinks = async () => {
+        const res = await axios.get('https://dslegends.org/api/social-links.php');
+        setSocialLinks(res.data);
+    }
+    useEffect(() => {
+        getSocialLinks();
+    }, []);
     return (
         <footer className="footer">
             <div className="footer-social">
-                <a className="br" href="https://www.facebook.com/dslsingapore" target="_blank" rel="noreferrer"><i className="fa fa-facebook"></i></a>
-                <a className="br" href="https://www.instagram.com/dslsingapore" target="_blank" rel="noreferrer"><i className="fa fa-instagram"></i></a>
-                <a className="br" href="https://twitter.com/dslsingapore" target="_blank" rel="noreferrer"><i className="fa fa-twitter"></i></a>
-                <a className="br" href="https://www.tiktok.com/@dslsingapore" target="_blank" rel="noreferrer"><img src="https://videonft.sg/assets/images/tiktok-icon.png" style={{ width: "15px" }} alt="" /></a>
-                <a className="br" href="https://www.linkedin.com/company/dslsingapore" target="_blank" rel="noreferrer"><i className="fa fa-linkedin"></i></a>
-                <a className="br" href="https://www.pinterest.com/dslsingapore" target="_blank" rel="noreferrer"><i className="fa fa-pinterest"></i></a>
-                <a className="br" href="https://medium.com/@dslsingapore" target="_blank" rel="noreferrer"><i className="fa fa-medium"></i></a>
-                <a className="br" href="https://t.me/dslsg" target="_blank" rel="noreferrer"><i className="fa fa-telegram"></i></a>
+                <a className="br" href={socialLinks.facebook} target="_blank" rel="noreferrer"><i className="fa fa-facebook"></i></a>
+                <a className="br" href={socialLinks.instagram} target="_blank" rel="noreferrer"><i className="fa fa-instagram"></i></a>
+                <a className="br" href={socialLinks.twitter} target="_blank" rel="noreferrer"><i className="fa fa-twitter"></i></a>
+                <a className="br" href={socialLinks.tiktok} target="_blank" rel="noreferrer"><img src="https://videonft.sg/assets/images/tiktok-icon.png" style={{ width: "15px" }} alt="" /></a>
+                <a className="br" href={socialLinks.linkedin} target="_blank" rel="noreferrer"><i className="fa fa-linkedin"></i></a>
+                <a className="br" href={socialLinks.pinterest} target="_blank" rel="noreferrer"><i className="fa fa-pinterest"></i></a>
+                <a className="br" href={socialLinks.medium} target="_blank" rel="noreferrer"><i className="fa fa-medium"></i></a>
+                <a className="br" href={socialLinks.discord} target="_blank" rel="noreferrer"><i className="fa-brands fa-discord"></i></a>
+                {/* <a className="br" href="https://t.me/dslsg" target="_blank" rel="noreferrer"><i className="fa fa-telegram"></i></a> */}
             </div>
 
             <center>
                 <div className="row me-0">
                     <div className="col-lg-2"></div>
                     <div className="col-lg-10">
-                        <div className="row">
+                        <div className="row fw-normal">
                             <div className="col-md-2 col-xs-12">
                                 <NavLink className="hover-class" to="/about-us" style={{ maxWidth: "100% !important" }}>
-                                    <h6 style={{ fontSize: "0.8rem !important" }}>About Us</h6>
+                                    <h6>About Us</h6>
                                 </NavLink>
                             </div>
                             <div className="col-md-2 col-xs-12">
                                 <NavLink className="hover-class" to="/terms-of-use" style={{ maxWidth: "100% !important" }}>
-                                    <h6 style={{ fontSize: " 0.8rem !important" }}>Terms Of Use</h6>
+                                    <h6>Terms Of Use</h6>
                                 </NavLink>
                             </div>
                             <div className="col-md-2 col-xs-12" style={{ padding: "0px" }}>
                                 <NavLink className="hover-class" to="/data-protection-notice" style={{ maxWidth: "100% !important" }}>
-                                    <h6 style={{ fontSize: " 0.8rem !important" }}>Data Protection Notice</h6>
+                                    <h6>Data Protection Notice</h6>
                                 </NavLink>
                             </div>
                             <div className="col-md-2 col-xs-12">
                                 <NavLink className="hover-class" to="/how-this-works" style={{ maxWidth: "100% !important" }}>
-                                    <h6 style={{ fontSize: " 0.8rem !important" }}>How This Works?</h6>
+                                    <h6>How This Works?</h6>
                                 </NavLink>
                             </div>
                             <div className="col-md-2 col-xs-12 footer-space">
                                 <NavLink className="hover-class" to="/contact-us" style={{ maxWidth: "100% !important" }}>
-                                    <h6 style={{ fontSize: " 0.8rem !important" }}>Contact</h6>
+                                    <h6>Contact</h6>
                                 </NavLink>
                             </div>
                         </div>
