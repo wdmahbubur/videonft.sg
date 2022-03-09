@@ -1,23 +1,20 @@
 import axios from 'axios';
-import { Tab } from 'bootstrap';
 import React, { useEffect, useRef, useState } from 'react';
-import { Tabs } from 'react-bootstrap';
+import { Button, Modal, Tab, Tabs } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import './VideoDetails.css';
 
 const VideoDetails = () => {
     const [data, setData] = useState({})
+    const [show, setShow] = useState(false);
+
     const id = useParams();
     const socialIcon = useRef();
 
     useEffect(() => {
         axios.get("https://jsonkeeper.com/b/62ET")
             .then(res => {
-                console.log(res.data)
-
-                const item = res.data.find(video => video.id === id);
-                console.log(item)
-                setData(item);
+                setData(res.data)
             })
     }, [id])
 
@@ -25,16 +22,20 @@ const VideoDetails = () => {
     const openSocialShare = () => {
         socialIcon.current.classList.toggle("show-social-icon");
     }
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <div className='container py-5'>
             <div className="row align-items-center">
                 <div className="col-md-6">
-                    <video loop="loop" autoPlay="autoplay" muted="muted" controls="controls" src={data?.link} className='w-100'></video>
+                    <video loop="loop" autoPlay="autoplay" muted="muted" controls="controls" src={data?.link || "./json/test.mp4"} className='w-100'></video>
                 </div>
 
                 <div className="col-md-6" style={{ backgroundColor: "#F5F5F5" }}>
                     <center>
-                        <button type="button" className="btn text-dark border border-1 border-dark px-4" style={{ borderRadius: "12px", marginTop: "10px" }}>
+                        <button type="button" className="btn text-dark border border-1 border-dark px-4" style={{ borderRadius: "12px", marginTop: "10px" }} onClick={handleShow}>
                             <i className="fa fa-heart mr-2 "></i> Like
                         </button>
                     </center>
@@ -46,10 +47,10 @@ const VideoDetails = () => {
 		</center> */}
 
                     <div className="pt-5 text-center">
-                        <h2 className="mb-1"> {data?.name} </h2>
+                        <h2 className="mb-1"> {data?.name || "Test"}</h2>
 
                         <div className="text-secondary ms-1 mt-2">
-                            <i className="fas fa-user"></i> {data?.owner}
+                            <i className="fas fa-user"></i> {data?.owner || "dslegends"}
                         </div>
                         <div className="my-4 d-flex justify-content-center">
                             {/* @php
@@ -64,7 +65,7 @@ const VideoDetails = () => {
 				<span data-v-cef40192=""> @if(isset($videoData->likes_count)) {{$videoData->likes_count}} @else 0 @endif </span>
 			</button>
 			@else */}
-                            <button data-toggle="modal" data-target="#likealert" className="btn text-dark border border-1 border-dark px-4 me-3" style={{ borderRadius: "12px" }} >
+                            <button className="btn text-dark border border-1 border-dark px-4 me-3" style={{ borderRadius: "12px" }} onClick={handleShow}>
                                 <i className="fa fa-heart-o me-2" ></i> Likes
                                 <span> </span>
                             </button>
@@ -154,33 +155,27 @@ const VideoDetails = () => {
 
                             </Tab>
                         </Tabs>
-                        <div className="btn-box tac">
-                            {/* <div data-v-cef40192="" className="box-holder"></div>  */}
-                            <div className="box-main py-3 d-flex flex-column justify-content-center">
-                                <div>
-                                    <div className="w-100">
-                                        <div className='text-center'>
-                                            <button className="btn btn-warning mx-auto text-white fw-bold"> Buy Now at {data?.priceBNB} BNB ({data?.priceUSD} USD) <br /> Include Service fees of {data?.serviceFee}% too </button>
-                                            {/* <button data-v-cef40192="" className="btn btn-primary btn-round ml-2 btn_id" style="min-width: 130px;"> Place A Bid </button> */}
-                                        </div>
-                                    </div>
-                                    <div className="mt-2 text-center">
-                                        <span style={{ color: "gray" }}>Buy Price Includes <b>{data?.serviceFee}%</b> Service Fees<b></b>
-                                        </span>
-                                        <span>
-                                            <b className="c"></b>
-                                            <span className="t-gray"></span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div >
+                        <div className='d-flex flex-column align-items-center justify-content-center py-3'>
+                            <button className="btn btn-warning mx-auto text-white fw-bold"> Buy Now at {data?.priceBNB} BNB ({data?.priceUSD} USD) <br /> Include Service fees of {data?.serviceFee}% too </button>
+                            {/* <button data-v-cef40192="" className="btn btn-primary btn-round ml-2 btn_id" style="min-width: 130px;"> Place A Bid </button> */}
+                            <span style={{ color: "gray" }}>Buy Price Includes <b>{data?.serviceFee}%</b> Service Fees<b></b>
+                            </span>
+                        </div>
                     </div>
-
-                </div >
+                </div>
             </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Connect with TikTok to Like</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
-
     );
 };
 

@@ -6,6 +6,7 @@ import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
 import DataProtectionNotice from './pages/DataProtectionNotice/DataProtectionNotice';
 import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
 import Marketplace from './pages/Marketplace/Marketplace';
 import TermsOfUse from './pages/TermsOfUse/TermsOfUse';
 import VideoDetails from './pages/VideoDetails/VideoDetails';
@@ -24,6 +25,7 @@ function App() {
             <Route path='terms-of-use' element={<TermsOfUse />} />
             <Route path='data-protection-notice' element={<DataProtectionNotice />} />
           </Route>
+          <Route path='/login' element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
