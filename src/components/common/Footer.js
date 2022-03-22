@@ -15,15 +15,16 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-social">
-                <a className="br" href={socialLinks.facebook} target="_blank" rel="noreferrer"><i className="fa fa-facebook"></i></a>
-                <a className="br" href={socialLinks.instagram} target="_blank" rel="noreferrer"><i className="fa fa-instagram"></i></a>
-                <a className="br" href={socialLinks.twitter} target="_blank" rel="noreferrer"><i className="fa fa-twitter"></i></a>
-                <a className="br" href={socialLinks.tiktok} target="_blank" rel="noreferrer"><img src="https://videonft.sg/assets/images/tiktok-icon.png" style={{ width: "15px" }} alt="" /></a>
-                <a className="br" href={socialLinks.linkedin} target="_blank" rel="noreferrer"><i className="fa fa-linkedin"></i></a>
-                <a className="br" href={socialLinks.pinterest} target="_blank" rel="noreferrer"><i className="fa fa-pinterest"></i></a>
-                <a className="br" href={socialLinks.medium} target="_blank" rel="noreferrer"><i className="fa fa-medium"></i></a>
-                <a className="br" href={socialLinks.discord} target="_blank" rel="noreferrer"><i className="fa-brands fa-discord"></i></a>
-                {/* <a className="br" href="https://t.me/dslsg" target="_blank" rel="noreferrer"><i className="fa fa-telegram"></i></a> */}
+                {socialLinks.facebook && <a className="br" href={socialLinks.facebook} target="_blank" rel="noreferrer"><i className="fa fa-facebook"></i></a>}
+                {socialLinks.instagram && <a className="br" href={socialLinks.instagram} target="_blank" rel="noreferrer"><i className="fa fa-instagram"></i></a>}
+                {socialLinks.twitter && <a className="br" href={socialLinks.twitter} target="_blank" rel="noreferrer"><i className="fa fa-twitter"></i></a>}
+                {socialLinks.tiktok && <a className="br" href={socialLinks.tiktok} target="_blank" rel="noreferrer"><img src="https://videonft.sg/assets/images/tiktok-icon.png" style={{ width: "15px" }} alt="" /></a>}
+                {socialLinks.linkedin && <a className="br" href={socialLinks.linkedin} target="_blank" rel="noreferrer"><i className="fa fa-linkedin"></i></a>}
+                {socialLinks.pinterest && <a className="br" href={socialLinks.pinterest} target="_blank" rel="noreferrer"><i className="fa fa-pinterest"></i></a>}
+                {socialLinks.medium && <a className="br" href={socialLinks.medium} target="_blank" rel="noreferrer"><i className="fa fa-medium"></i></a>}
+                {socialLinks.discord && <a className="br" href={socialLinks.discord} target="_blank" rel="noreferrer"><i className="fa-brands fa-discord"></i></a>}
+                {socialLinks.telegram && <a className="br" href="https://t.me/dslsg" target="_blank" rel="noreferrer"><i className="fa fa-telegram"></i></a>}
+
             </div>
 
             <center>

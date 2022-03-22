@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
+    const { user, logout } = useAuth();
     const menu = useRef();
     const trigger = useRef();
     const openMenu = () => {
@@ -35,33 +37,40 @@ const Header = () => {
                     <div className="nav ps-1 d-flex mb-none align-content-center main-menu" ref={menu}>
                         <center>
                             <div className="account-box pc-ml-auto d-md-none">
-                                <NavLink to="/login" className="text-decoration-none">
-                                    <button className="outlined bg-dark">Connect</button>
-                                </NavLink>
-                                {/* <NavLink to="/login" className="text-decoration-none">
-                                    <button className="outlined bg-dark">Disconnect</button>
-                                </NavLink> */}
+                                {
+                                    !user.email ?
+                                        <NavLink to="/login" className="text-decoration-none">
+                                            <button className="outlined bg-dark">Connect</button>
+                                        </NavLink>
+                                        :
+                                        <button className="outlined bg-dark" onClick={logout}>Disconnect</button>
+                                }
                             </div>
                         </center>
                         <center><NavLink to="/marketplace" className="text-decoration-none ms-lg-5">  Marketplace </NavLink></center>
-                        {/* <center><NavLink to="/marketplace" className="text-decoration-none">  My Collection </NavLink></center>
-                        <center><NavLink to="/marketplace" className="text-decoration-none">  Create </NavLink></center>
-                        <center><NavLink to="/marketplace" className="text-decoration-none">  Profile </NavLink></center> */}
+                        {
+                            user.email &&
+                            <center>
+                                <NavLink to="/my-collection" className="text-decoration-none">  My Collection </NavLink>
+                                <NavLink to="/create" className="text-decoration-none">  Create </NavLink>
+                                <NavLink to="/profile" className="text-decoration-none">  Profile </NavLink>
+                            </center>
+                        }
 
                     </div>
                 </div>
                 <div className="h-right">
                     <div className="d-flex align-items-center">
                         <div className="account-box pc-ml-auto mb-none">
-                            {/* <button class="outlined"></button> */}
-                            <NavLink to="/login" className="text-decoration-none">
-                                <button type="button" className="outlined bg-dark">Connect</button>
-                            </NavLink>
 
-                            {/* <NavLink to="#" data-toggle="modal" data-target="#exampleModal" style="font-size: 12px;display: flex; justify-content: center;color:red" class=" mt-3">Disconnect</NavLink>
-                            @else
-                            <a href="#" data-toggle="modal" data-target="#exampleModal" style="display: flex; justify-content: center;" type="button" class=" mt-1">Logout </a>
-                            @endif */}
+                            {
+                                !user.email ?
+                                    <NavLink to="/login" className="text-decoration-none">
+                                        <button className="outlined bg-dark">Connect</button>
+                                    </NavLink>
+                                    :
+                                    <button className="outlined bg-dark" onClick={logout}>Disconnect</button>
+                            }
                         </div>
                     </div>
                 </div>
